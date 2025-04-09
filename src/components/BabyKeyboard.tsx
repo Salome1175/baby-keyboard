@@ -153,6 +153,9 @@ export default function BabyKeyboard() {
   const [currentImage, setCurrentImage] = useState<string>("/images/apple.png")
   // const [keyPressed, setKeyPressed] = useState<string>("")
   const [pressedKeys, setPressedKeys] = useState<Set<string>>(new Set<string>())
+  const [showTip, setShowTip] = useState(false);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
 
   const speak = (text: string, audioPath?: string) => {
     window.speechSynthesis.cancel()
@@ -230,6 +233,61 @@ export default function BabyKeyboard() {
                 className="word-image"
             />
         )}
+
+        <button
+            onClick={() => setShowTip(true)}
+            className="milk-button"
+        >
+          请我喝一杯奶茶 🧋
+        </button>
+
+        {showTip && (
+            <div className="milk-overlay" onClick={() => setShowTip(false)}>
+              <div className="milk-popup" onClick={(e) => e.stopPropagation()}>
+                <h2 className="milk-title">请我喝一杯奶茶 🧋</h2>
+                <p className="milk-text">扫描下方任意二维码支持作者</p>
+                <div className="milk-pay-options">
+                  <div className="pay-item">
+                    <img
+                        src="images/wechat.png"
+                        alt="微信"
+                        className="pay-image"
+                        onClick={() => setPreviewImage("images/wechat.png")}
+                    />
+                    <p>微信</p>
+                  </div>
+                  <div className="pay-item">
+                    <img
+                        src="images/alipay.png"
+                        alt="支付宝"
+                        className="pay-image"
+                        onClick={() => setPreviewImage("images/alipay.png")}
+                    />
+                    <p>支付宝</p>
+                  </div>
+                  <div className="pay-item">
+                    <img
+                        src="images/paypal.png"
+                        alt="PayPal"
+                        className="pay-image"
+                        onClick={() => setPreviewImage("images/paypal.png")}
+                    />
+                    <p>PayPal</p>
+                  </div>
+                </div>
+                <button onClick={() => setShowTip(false)} className="milk-close">关闭</button>
+              </div>
+            </div>
+        )}
+
+        {previewImage && (
+            <div className="preview-overlay" onClick={() => setPreviewImage(null)}>
+              <img src={previewImage} alt="放大预览" className="preview-image" />
+            </div>
+        )}
+
+
+
       </div>
   )
 
