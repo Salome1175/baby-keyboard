@@ -290,15 +290,15 @@ export default function BabyKeyboard() {
                     />
                     <p>支付宝</p>
                   </div>
-                  <div className="pay-item">
-                    <img
-                        src="images/paypal.png"
-                        alt="PayPal"
-                        className="pay-image"
-                        onClick={() => setPreviewImage("images/paypal.png")}
-                    />
-                    <p>PayPal</p>
-                  </div>
+                  {/*<div className="pay-item">*/}
+                  {/*  <img*/}
+                  {/*      src="images/paypal.png"*/}
+                  {/*      alt="PayPal"*/}
+                  {/*      className="pay-image"*/}
+                  {/*      onClick={() => setPreviewImage("images/paypal.png")}*/}
+                  {/*  />*/}
+                  {/*  <p>PayPal</p>*/}
+                  {/*</div>*/}
                 </div>
                 <button onClick={() => setShowTip(false)} className="milk-close">关闭</button>
               </div>
