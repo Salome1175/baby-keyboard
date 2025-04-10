@@ -274,7 +274,8 @@ export default function BabyKeyboard() {
                 <div className="milk-pay-options">
                   <div className="pay-item">
                     <img
-                        src="images/wechat.png"
+                        // src="/baby-keyboard/images/wechat.png"
+                        src={`${import.meta.env.BASE_URL}images/wechat.png`}
                         alt="微信"
                         className="pay-image"
                         onClick={() => setPreviewImage("images/wechat.png")}
@@ -283,7 +284,8 @@ export default function BabyKeyboard() {
                   </div>
                   <div className="pay-item">
                     <img
-                        src="images/alipay.png"
+                        // src="/baby-keyboard/images/alipay.png"
+                        src={`${import.meta.env.BASE_URL}images/alipay.png`}
                         alt="支付宝"
                         className="pay-image"
                         onClick={() => setPreviewImage("images/alipay.png")}
