@@ -156,6 +156,9 @@ export default function BabyKeyboard() {
   const [showTip, setShowTip] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
+  const [showAskDialog, setShowAskDialog] = useState(false);
+
+
 
   const speak = (text: string, audioPath?: string) => {
     window.speechSynthesis.cancel()
@@ -234,11 +237,19 @@ export default function BabyKeyboard() {
             />
         )}
 
+        {/*<button*/}
+        {/*    onClick={() => setShowTip(true)}*/}
+        {/*    className="milk-button"*/}
+        {/*>*/}
+        {/*  请我喝一杯奶茶 🧋*/}
+        {/*</button>*/}
+
         <button
-            onClick={() => setShowTip(true)}
-            className="milk-button"
+            onClick={() => setShowAskDialog(true)}
+            className="milk-button-icon"
+            aria-label="请我喝奶茶"
         >
-          请我喝一杯奶茶 🧋
+          🧋
         </button>
 
         {showTip && (
@@ -285,6 +296,32 @@ export default function BabyKeyboard() {
               <img src={previewImage} alt="放大预览" className="preview-image" />
             </div>
         )}
+
+        {showAskDialog && (
+            <div className="milk-overlay" onClick={() => setShowAskDialog(false)}>
+              <div className="milk-dialog" onClick={(e) => e.stopPropagation()}>
+                <p className="milk-question">可以请我喝一杯奶茶吗？</p>
+                <div className="milk-actions">
+                  <button
+                      className="milk-confirm"
+                      onClick={() => {
+                        setShowAskDialog(false);
+                        setShowTip(true);
+                      }}
+                  >
+                    好
+                  </button>
+                  <button
+                      className="milk-cancel"
+                      onClick={() => setShowAskDialog(false)}
+                  >
+                    下次一定
+                  </button>
+                </div>
+              </div>
+            </div>
+        )}
+
 
 
 

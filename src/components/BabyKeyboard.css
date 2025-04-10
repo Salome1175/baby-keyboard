@@ -47,14 +47,22 @@
 }
 
 
+/*.word-image {*/
+/*    width: 200vw;*/
+/*    max-width: 800px; !* ⬅️ 放大图片最大尺寸 *!*/
+/*    height: auto;*/
+/*    margin-top: 1rem;*/
+/*    border-radius: 1rem;*/
+/*    object-fit: contain;*/
+/*    box-shadow: 0 4px 12px rgba(0,0,0,0.2);*/
+/*}*/
 .word-image {
-    width: 200vw;
-    max-width: 800px; /* ⬅️ 放大图片最大尺寸 */
-    height: auto;
-    margin-top: 1rem;
-    border-radius: 1rem;
+    width: 800px;
+    height: 465px;
     object-fit: contain;
+    border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    margin-top: 1rem;
 }
 
 .milk-button {
@@ -135,10 +143,19 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/*.pay-image {*/
+/*    cursor: pointer;*/
+/*    transition: transform 0.3s ease;*/
+/*}*/
+
 .pay-image {
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
 
 .pay-image:hover {
     transform: scale(1.05);
@@ -160,4 +177,53 @@
     border-radius: 1rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     cursor: pointer;
+}
+
+.milk-button-icon {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.milk-dialog {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    max-width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.milk-question {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.milk-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.milk-confirm, .milk-cancel {
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.milk-confirm {
+    background-color: #10b981;
+    color: white;
+}
+
+.milk-cancel {
+    background-color: #e5e7eb;
+    color: #374151;
 }
