@@ -1,5 +1,5 @@
 // src/components/BabyKeyboard.tsx
-import { useEffect, useState } from "react"
+import {useEffect, useRef, useState} from "react"
 import "./BabyKeyboard.css"
 
 // 所有按键（包括字母和特殊键）
@@ -10,7 +10,6 @@ import "./BabyKeyboard.css"
 //   "shift","control","option","command","capslock",
 //   "f1","f2","f3","f4","f5","f6","f7","f8","f9","f10","f11","f12"
 // ]
-
 
 // 每个字母键映射多个单词（展示和发音）
 const wordMap: Record<string, { word: string; image: string; audio?: string }[]> = {
@@ -145,20 +144,15 @@ const wordMap: Record<string, { word: string; image: string; audio?: string }[]>
 }
 // , [pressedKeys])
 
-
 const exitKeys: [string, string] = ["q", "p"]
 
 export default function BabyKeyboard() {
   const [currentWord, setCurrentWord] = useState<string>("Apple")
   const [currentImage, setCurrentImage] = useState<string>("/images/apple.png")
-  // const [keyPressed, setKeyPressed] = useState<string>("")
-  const [pressedKeys, setPressedKeys] = useState<Set<string>>(new Set<string>())
+  const pressedKeysRef = useRef<Set<string>>(new Set());
   const [showTip, setShowTip] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-
   const [showAskDialog, setShowAskDialog] = useState(false);
-
-
 
   const speak = (text: string, audioPath?: string) => {
     window.speechSynthesis.cancel()
@@ -171,42 +165,69 @@ export default function BabyKeyboard() {
     }
   }
 
+  //启动自动全屏
+  useEffect(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    }
+  }, [])
+  //Esc 键并“恢复全屏”
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) {
+        console.log("检测到退出全屏，尝试重新进入");
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    });
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
-      const newKeys = new Set(pressedKeys);
-      newKeys.add(key);
-      setPressedKeys(newKeys);
-      setPressedKeys(new Set(pressedKeys))
+      pressedKeysRef.current.add(key);
 
-      if (pressedKeys.has(exitKeys[0]) && pressedKeys.has(exitKeys[1])) {
-        window.location.reload()
-        return
+      if (
+          pressedKeysRef.current.has(exitKeys[0]) &&
+          pressedKeysRef.current.has(exitKeys[1])
+      ) {
+        if (document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        }
+        window.location.reload();
       }
 
-      // setKeyPressed(key)
-
-      const list = wordMap[key] || wordMap['a']
-      const entry = list[Math.floor(Math.random() * list.length)]
-      setCurrentWord(entry.word)
-      setCurrentImage(entry.image)
-      speak(entry.word, entry.audio)
-    }
+      const list = wordMap[key] || wordMap['a'];
+      const entry = list[Math.floor(Math.random() * list.length)];
+      setCurrentWord(entry.word);
+      setCurrentImage(entry.image);
+      speak(entry.word, entry.audio);
+    };
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      const newKeys = new Set(pressedKeys);
-      newKeys.delete(e.key.toLowerCase());
-      setPressedKeys(newKeys);
-      setPressedKeys(new Set(pressedKeys))
-    }
+      pressedKeysRef.current.delete(e.key.toLowerCase());
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    window.addEventListener("keyup", handleKeyUp)
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-      window.removeEventListener("keyup", handleKeyUp)
-    }
-  }, [pressedKeys])
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
+
+  //拦截部分系统按键
+  useEffect(() => {
+    const preventKeys = ["meta", "control", "alt", "escape"];
+    const handleBlockKeys = (e: KeyboardEvent) => {
+      if (preventKeys.includes(e.key.toLowerCase())) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(`拦截了按键：${e.key}`);
+      }
+    };
+    window.addEventListener("keydown", handleBlockKeys, true);
+    return () => window.removeEventListener("keydown", handleBlockKeys, true);
+  }, []);
 
   return (
       <div className="baby-keyboard">
@@ -236,13 +257,6 @@ export default function BabyKeyboard() {
                 className="word-image"
             />
         )}
-
-        {/*<button*/}
-        {/*    onClick={() => setShowTip(true)}*/}
-        {/*    className="milk-button"*/}
-        {/*>*/}
-        {/*  请我喝一杯奶茶 🧋*/}
-        {/*</button>*/}
 
         <button
             onClick={() => setShowAskDialog(true)}
@@ -321,9 +335,6 @@ export default function BabyKeyboard() {
               </div>
             </div>
         )}
-
-
-
 
       </div>
   )
