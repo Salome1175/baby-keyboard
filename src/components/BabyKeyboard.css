@@ -227,3 +227,84 @@
     background-color: #e5e7eb;
     color: #374151;
 }
+
+.category-header {
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.category-header .arrow {
+    margin-right: 0.5rem;
+}
+
+.category-list {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+}
+
+.category-item .circle {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.category-item .label {
+    font-size: 1rem;
+}
+
+
+.category-dropdown {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    padding: 0.5rem 1rem;
+    min-width: 200px;
+}
+
+.category-header {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.category-header .arrow {
+    margin-right: 0.5rem;
+}
+
+.category-list {
+    margin-top: 0.5rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.category-item .circle {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.category-list {
+    margin-top: 0.5rem;
+    max-height: 300px; /* 固定最大高度 */
+    overflow-y: auto; /* 内容超出时出现滚动条 */
+    padding-right: 0.5rem; /* 给滚动条留一点空间 */
+}
+
