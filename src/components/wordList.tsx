@@ -1,172 +1,172 @@
-export const wordList: Record<string, { word: string; category: string }[]> = {
+export const wordList: Record<string, { word: string; chinese: string; category: string }[]> = {
     a: [
-        { word: "apple", category: "fruits" },
-        { word: "artist", category: "jobs" },
+        { word: "apple", chinese: "苹果", category: "fruits" },
+        { word: "artist", chinese: "艺术家", category: "jobs" }
     ],
     b: [
-        { word: "banana", category: "fruits" },
-        { word: "ball", category: "games and toys" },
+        { word: "banana", chinese: "香蕉", category: "fruits" },
+        { word: "ball", chinese: "球", category: "games and toys" }
     ],
     c: [
-        { word: "cat", category: "pets" },
-        { word: "car", category: "vehicles" },
+        { word: "cat", chinese: "猫", category: "pets" },
+        { word: "car", chinese: "汽车", category: "vehicles" }
     ],
     d: [
-        { word: "dog", category: "pets" },
-        { word: "duck", category: "birds" },
+        { word: "dog", chinese: "狗", category: "pets" },
+        { word: "duck", chinese: "鸭子", category: "birds" }
     ],
     e: [
-        { word: "elephant", category: "wild animals" },
-        { word: "egg", category: "foods" },
+        { word: "elephant", chinese: "大象", category: "wild animals" },
+        { word: "egg", chinese: "鸡蛋", category: "foods" }
     ],
     f: [
-        { word: "fish", category: "sea creatures" },
-        { word: "frog", category: "amphibians" },
+        { word: "fish", chinese: "鱼", category: "sea creatures" },
+        { word: "frog", chinese: "青蛙", category: "amphibians" }
     ],
     g: [
-        { word: "giraffe", category: "wild animals" },
-        { word: "guitar", category: "musical instruments" },
+        { word: "giraffe", chinese: "长颈鹿", category: "wild animals" },
+        { word: "guitar", chinese: "吉他", category: "musical instruments" }
     ],
     h: [
-        { word: "hat", category: "clothes" },
-        { word: "house", category: "buildings" },
+        { word: "hat", chinese: "帽子", category: "clothes" },
+        { word: "house", chinese: "房子", category: "buildings" }
     ],
     i: [
-        { word: "ice", category: "nature" },
-        { word: "igloo", category: "buildings" },
+        { word: "ice", chinese: "冰", category: "nature" },
+        { word: "igloo", chinese: "冰屋", category: "buildings" }
     ],
     j: [
-        { word: "juice", category: "drinks" },
-        { word: "jelly", category: "foods" },
+        { word: "juice", chinese: "果汁", category: "drinks" },
+        { word: "jelly", chinese: "果冻", category: "foods" }
     ],
     k: [
-        { word: "kite", category: "games and toys" },
-        { word: "kangaroo", category: "wild animals" },
+        { word: "kite", chinese: "风筝", category: "games and toys" },
+        { word: "kangaroo", chinese: "袋鼠", category: "wild animals" }
     ],
     l: [
-        { word: "lion", category: "wild animals" },
-        { word: "lamp", category: "household items" },
+        { word: "lion", chinese: "狮子", category: "wild animals" },
+        { word: "lamp", chinese: "灯", category: "household items" }
     ],
     m: [
-        { word: "monkey", category: "wild animals" },
-        { word: "moon", category: "nature" },
+        { word: "monkey", chinese: "猴子", category: "wild animals" },
+        { word: "moon", chinese: "月亮", category: "nature" }
     ],
     n: [
-        { word: "nose", category: "body parts" },
-        { word: "nest", category: "birds" },
+        { word: "nose", chinese: "鼻子", category: "body parts" },
+        { word: "nest", chinese: "鸟巢", category: "birds" }
     ],
     o: [
-        { word: "orange", category: "fruits" },
-        { word: "owl", category: "birds" },
+        { word: "orange", chinese: "橙子", category: "fruits" },
+        { word: "owl", chinese: "猫头鹰", category: "birds" }
     ],
     p: [
-        { word: "pig", category: "farm animals" },
-        { word: "panda", category: "wild animals" },
+        { word: "pig", chinese: "猪", category: "farm animals" },
+        { word: "panda", chinese: "熊猫", category: "wild animals" }
     ],
     q: [
-        { word: "queen", category: "jobs" },
-        { word: "quail", category: "birds" },
+        { word: "queen", chinese: "女王", category: "jobs" },
+        { word: "quail", chinese: "鹌鹑", category: "birds" }
     ],
     r: [
-        { word: "rabbit", category: "pets" },
-        { word: "robot", category: "games and toys" },
+        { word: "rabbit", chinese: "兔子", category: "pets" },
+        { word: "robot", chinese: "机器人", category: "games and toys" }
     ],
     s: [
-        { word: "sun", category: "nature" },
-        { word: "star", category: "nature" },
+        { word: "sun", chinese: "太阳", category: "nature" },
+        { word: "star", chinese: "星星", category: "nature" }
     ],
     t: [
-        { word: "tiger", category: "wild animals" },
-        { word: "train", category: "vehicles" },
+        { word: "tiger", chinese: "老虎", category: "wild animals" },
+        { word: "train", chinese: "火车", category: "vehicles" }
     ],
     u: [
-        { word: "umbrella", category: "objects" },
-        { word: "unicorn", category: "fantasy" },
+        { word: "umbrella", chinese: "雨伞", category: "objects" },
+        { word: "unicorn", chinese: "独角兽", category: "fantasy" }
     ],
     v: [
-        { word: "violin", category: "musical instruments" },
-        { word: "van", category: "vehicles" },
+        { word: "violin", chinese: "小提琴", category: "musical instruments" },
+        { word: "van", chinese: "面包车", category: "vehicles" }
     ],
     w: [
-        { word: "water", category: "nature" },
-        { word: "whale", category: "sea creatures" },
+        { word: "water", chinese: "水", category: "nature" },
+        { word: "whale", chinese: "鲸鱼", category: "sea creatures" }
     ],
     x: [
-        { word: "xylophone", category: "musical instruments" },
-        { word: "x-ray", category: "objects" },
+        { word: "xylophone", chinese: "木琴", category: "musical instruments" },
+        { word: "x-ray", chinese: "X光", category: "objects" }
     ],
     y: [
-        { word: "yogurt", category: "foods" },
-        { word: "yak", category: "wild animals" },
+        { word: "yogurt", chinese: "酸奶", category: "foods" },
+        { word: "yak", chinese: "牦牛", category: "wild animals" }
     ],
     z: [
-        { word: "zebra", category: "wild animals" },
-        { word: "zoo", category: "public places" },
+        { word: "zebra", chinese: "斑马", category: "wild animals" },
+        { word: "zoo", chinese: "动物园", category: "public places" }
     ],
     0: [
-        { word: "zero", category: "numbers" }
+        { word: "zero", chinese: "零", category: "numbers" }
     ],
     1: [
-        { word: "one", category: "numbers" }
+        { word: "one", chinese: "一", category: "numbers" }
     ],
     2: [
-        { word: "two", category: "numbers" }
+        { word: "two", chinese: "二", category: "numbers" }
     ],
     3: [
-        { word: "three", category: "numbers" }
+        { word: "three", chinese: "三", category: "numbers" }
     ],
     4: [
-        { word: "four", category: "numbers" }
+        { word: "four", chinese: "四", category: "numbers" }
     ],
     5: [
-        { word: "five", category: "numbers" }
+        { word: "five", chinese: "五", category: "numbers" }
     ],
     6: [
-        { word: "six", category: "numbers" }
+        { word: "six", chinese: "六", category: "numbers" }
     ],
     7: [
-        { word: "seven", category: "numbers" }
+        { word: "seven", chinese: "七", category: "numbers" }
     ],
     8: [
-        { word: "eight", category: "numbers" }
+        { word: "eight", chinese: "八", category: "numbers" }
     ],
     9: [
-        { word: "nine", category: "numbers" }
+        { word: "nine", chinese: "九", category: "numbers" }
     ],
     f1: [
-        { word: "one", category: "numbers" }
+        { word: "one", chinese: "一", category: "numbers" }
     ],
     f2: [
-        { word: "two", category: "numbers" }
+        { word: "two", chinese: "二", category: "numbers" }
     ],
     f3: [
-        { word: "three", category: "numbers" }
+        { word: "three", chinese: "三", category: "numbers" }
     ],
     f4: [
-        { word: "four", category: "numbers" }
+        { word: "four", chinese: "四", category: "numbers" }
     ],
     f5: [
-        { word: "five", category: "numbers" }
+        { word: "five", chinese: "五", category: "numbers" }
     ],
     f6: [
-        { word: "six", category: "numbers" }
+        { word: "six", chinese: "六", category: "numbers" }
     ],
     f7: [
-        { word: "seven", category: "numbers" }
+        { word: "seven", chinese: "七", category: "numbers" }
     ],
     f8: [
-        { word: "eight", category: "numbers" }
+        { word: "eight", chinese: "八", category: "numbers" }
     ],
     f9: [
-        { word: "nine", category: "numbers" }
+        { word: "nine", chinese: "九", category: "numbers" }
     ],
     f10: [
-        { word: "ten", category: "numbers" }
+        { word: "ten", chinese: "十", category: "numbers" }
     ],
     f11: [
-        { word: "eleven", category: "numbers" }
+        { word: "eleven", chinese: "十一", category: "numbers" }
     ],
     f12: [
-        { word: "twelve", category: "numbers" }
+        { word: "twelve", chinese: "十二", category: "numbers" }
     ]
 };

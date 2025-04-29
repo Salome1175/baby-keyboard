@@ -308,3 +308,22 @@
     padding-right: 0.5rem; /* 给滚动条留一点空间 */
 }
 
+.language-button-icon {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    background-color: #ffffffdd;
+    border: 2px solid #999;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+.language-button-icon:hover {
+    background-color: #f0f0f0;
+}

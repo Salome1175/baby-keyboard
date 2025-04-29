@@ -13,12 +13,13 @@ import { wordList } from "./wordList.tsx";
 // ]
 
 //单词表
-export const wordMap: Record<string, { word: string; image: string; audio?: string; category: string }[]> =
+export const wordMap: Record<string, { word: string; chinese: string; image: string; audio?: string; category: string }[]> =
     Object.fromEntries(
         Object.entries(wordList).map(([key, entries]) => [
           key,
-          entries.map(({ word, category }) => ({
+          entries.map(({ word, chinese, category }) => ({
             word: word.charAt(0).toUpperCase() + word.slice(1),
+            chinese: chinese,
             image: `images/${word}.png`,
             audio: `sounds/${word}.mp3`,
             category,
@@ -37,6 +38,12 @@ export default function BabyKeyboard() {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [showAskDialog, setShowAskDialog] = useState(false);
 
+  //中文
+  const [currentChinese, setCurrentChinese] = useState<string>("苹果");
+
+  //语言状态
+  // const [speakLanguage, setSpeakLanguage] = useState<"en" | "zh">("en");
+
   //新增分类选项区域
   const selectedCategoriesRef = useRef<string[]>(["all"]);
   const [selectedCategories, _setSelectedCategories] = useState<string[]>(["all"]);
@@ -49,6 +56,19 @@ export default function BabyKeyboard() {
 
   //下拉category选相框
   const [showCategories, setShowCategories] = useState(false);
+
+  //语言状态
+  const [speakLanguage, setSpeakLanguage] = useState<"en" | "zh">("en");
+  const speakLanguageRef = useRef<"en" | "zh">("en");
+
+  //当切换语言时，一起更新 ref
+  const toggleLanguage = () => {
+    setSpeakLanguage(prev => {
+      const newLang = prev === "en" ? "zh" : "en";
+      speakLanguageRef.current = newLang;
+      return newLang;
+    });
+  };
 
   const toggleCategory = (category: string) => {
     if (category === "all") {
@@ -75,16 +95,40 @@ export default function BabyKeyboard() {
       )
   )];
 
-  const speak = (text: string, audioPath?: string) => {
-    window.speechSynthesis.cancel()
-    if (audioPath) {
-      const audio = new Audio(audioPath);
-      audio.play().catch(e => console.warn('Audio play failed:', e));
-    } else {
-      const utterance = new SpeechSynthesisUtterance(text)
-      window.speechSynthesis.speak(utterance)
-    }
-  }
+  //朗读时语言切换
+  const speak = (textEn: string, textZh: string) => {
+    window.speechSynthesis.cancel();
+
+    const currentLang = speakLanguageRef.current; // 🔥 这里用ref拿最新的！
+
+    console.log("🎯 当前切换语言：", currentLang);
+    console.log("🔤 英文单词：", textEn);
+    console.log("🀄 中文单词：", textZh);
+
+    const baseFileName = currentLang === "en" ? textEn.toLowerCase() : encodeURIComponent(textZh);
+    const audioPath = `${import.meta.env.BASE_URL}sounds/${currentLang === "en" ? "English" : "Chinese"}/${baseFileName}.mp3`;
+
+    console.log("🎵 尝试播放的音频路径：", audioPath);
+
+    const audio = new Audio(audioPath);
+
+    audio.addEventListener('canplaythrough', () => {
+      console.log("✅ 音频可以正常播放，开始播放！");
+      audio.play().catch(e => console.warn('❌ 播放音频时失败: ', e));
+    });
+
+    audio.addEventListener('error', () => {
+      console.warn("⚠️ 音频加载失败，准备fallback到系统朗读！");
+      const utterance = new SpeechSynthesisUtterance(
+          currentLang === "en" ? textEn : textZh
+      );
+      utterance.lang = currentLang === "en" ? "en-US" : "zh-CN";
+      console.log("📢 使用TTS朗读：", utterance.text);
+      window.speechSynthesis.speak(utterance);
+    });
+
+    audio.load();
+  };
 
   //启动自动全屏
   useEffect(() => {
@@ -139,8 +183,11 @@ export default function BabyKeyboard() {
       indexMapRef.current[categoryKey] = index + 1;
 
       setCurrentWord(entry.word);
+      setCurrentChinese(entry.chinese);
       setCurrentImage(`${import.meta.env.BASE_URL}${entry.image}`);
-      speak(entry.word, entry.audio ? `${import.meta.env.BASE_URL}${entry.audio}` : undefined);
+      //speak(entry.word, entry.chinese, entry.audio ? `${import.meta.env.BASE_URL}${entry.audio}` : undefined);
+      speak(entry.word, entry.chinese);
+
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
@@ -216,9 +263,19 @@ export default function BabyKeyboard() {
           )}
         </div>
 
-        <div className="word-display">
-          {currentWord}
+        {/*<button onClick={() => setSpeakLanguage(speakLanguage === "en" ? "zh" : "en")}>*/}
+        {/*  切换朗读：{speakLanguage === "en" ? "英文" : "中文"}*/}
+        {/*</button>*/}
+
+
+        {/*<div className="word-display">*/}
+        {/*  {currentWord}       {currentChinese}*/}
+        {/*</div>*/}
+
+        <div className="text-4xl font-bold text-purple-600 animate-pulse">
+          {currentWord} / {currentChinese}
         </div>
+
         {currentImage && (
             <img
                 src={currentImage}
@@ -226,6 +283,13 @@ export default function BabyKeyboard() {
                 className="word-image"
             />
         )}
+
+        <button
+            onClick={toggleLanguage}
+            className="language-button-icon"
+        >
+          切换朗读：{speakLanguage === "en" ? "英文" : "中文"}
+        </button>
 
         <button
             onClick={() => setShowAskDialog(true)}
