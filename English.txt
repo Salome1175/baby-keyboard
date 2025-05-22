@@ -1,0 +1,491 @@
+carrot
+broccoli
+potato
+tomato
+cucumber
+eggplant
+bell pepper
+onion
+lettuce
+spinach
+cabbage
+cauliflower
+pumpkin
+sweet potato
+radish
+turnip
+beetroot
+asparagus
+celery
+pea
+green bean
+okra
+zucchini
+corn
+garlic
+ginger
+mushroom
+chili pepper
+bamboo shoot
+lotus root
+yam
+leek
+fennel
+artichoke
+endive
+kale
+parsley
+dill
+chive
+shallot
+parsnip
+cress
+arugula
+bok choy
+mustard greens
+collard greens
+swiss chard
+jerusalem artichoke
+taro
+cat
+dog
+elephant
+giraffe
+lion
+monkey
+panda
+tiger
+zebra
+kangaroo
+rabbit
+pig
+duck
+owl
+bear
+wolf
+fox
+deer
+goat
+sheep
+cow
+horse
+donkey
+camel
+hippopotamus
+rhinoceros
+crocodile
+alligator
+turtle
+frog
+snake
+lizard
+chicken
+rooster
+hen
+goose
+turkey
+peacock
+swan
+eagle
+hawk
+falcon
+vulture
+parrot
+sparrow
+pigeon
+crow
+magpie
+woodpecker
+bat
+mouse
+rat
+squirrel
+hedgehog
+otter
+beaver
+seal
+walrus
+dolphin
+whale
+shark
+octopus
+crab
+lobster
+shrimp
+jellyfish
+starfish
+snail
+slug
+bee
+wasp
+ant
+butterfly
+moth
+dragonfly
+mosquito
+fly
+spider
+scorpion
+centipede
+millipede
+earthworm
+clam
+oyster
+squid
+penguin
+sealion
+koala
+platypus
+lemur
+chimpanzee
+gorilla
+orangutan
+sloth
+armadillo
+raccoon
+badger
+mongoose
+porcupine
+weasel
+apple
+banana
+orange
+strawberry
+grape
+watermelon
+pear
+peach
+pineapple
+mango
+lemon
+lime
+cherry
+blueberry
+raspberry
+blackberry
+kiwi
+plum
+apricot
+pomegranate
+grapefruit
+melon
+cantaloupe
+fig
+date
+persimmon
+passion fruit
+dragon fruit
+starfruit
+guava
+lychee
+longan
+jackfruit
+durian
+coconut
+olive
+cranberry
+mulberry
+tangerine
+mandarin
+sapodilla
+red
+blue
+yellow
+green
+purple
+pink
+brown
+black
+white
+gray
+gold
+silver
+beige
+cyan
+magenta
+navy
+maroon
+teal
+car
+bus
+train
+airplane
+bicycle
+motorcycle
+boat
+helicopter
+subway
+taxi
+ambulance
+fire truck
+police car
+school bus
+truck
+van
+tram
+scooter
+minibus
+pickup truck
+monorail
+cable car
+ferry
+yacht
+canoe
+kayak
+rowboat
+sailboat
+submarine
+spaceship
+rocket
+hot air balloon
+glider
+paraglider
+skateboard
+roller skates
+segway
+hoverboard
+rickshaw
+tuk-tuk
+golf cart
+snowmobile
+bulldozer
+forklift
+crane
+excavator
+dump truck
+cement mixer
+tractor
+combine harvester
+fire engine
+ambulance van
+limousine
+sports car
+convertible
+jeep
+minivan
+tanker truck
+garbage truck
+delivery van
+ice cream truck
+hearse
+tow truck
+road roller
+street sweeper
+quad bike
+motorhome
+caravan
+jet ski
+fishing boat
+barge
+container ship
+cruise ship
+oil tanker
+scooter bike
+electric bike
+electric car
+segway scooter
+mountain bike
+road bike
+tandem bike
+rickshaw bike
+handcart
+baby stroller
+wheelchair
+sled
+dog sled
+horse carriage
+camel caravan
+zero
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+teacher
+doctor
+nurse
+police
+firefighter
+chef
+artist
+scientist
+engineer
+pilot
+driver
+farmer
+lawyer
+judge
+soldier
+sailor
+waiter
+waitress
+actor
+actress
+singer
+dancer
+writer
+reporter
+photographer
+designer
+manager
+clerk
+cashier
+guard
+piano
+guitar
+violin
+drum
+flute
+trumpet
+saxophone
+xylophone
+clarinet
+cello
+double bass
+harp
+accordion
+harmonica
+banjo
+mandolin
+ukulele
+trombone
+tuba
+oboe
+bassoon
+piccolo
+triangle
+cymbals
+maracas
+castanets
+gong
+tambourine
+conga
+bongo
+book
+pen
+pencil
+ruler
+eraser
+scissors
+glue
+crayon
+notebook
+bag
+schoolbag
+desk
+chair
+table
+lamp
+clock
+watch
+calendar
+phone
+mobile phone
+computer
+laptop
+keyboard
+printer
+camera
+television
+remote
+fan
+air conditioner
+fridge
+microwave
+oven
+stove
+kettle
+toaster
+cup
+glass
+bottle
+plate
+bowl
+spoon
+fork
+knife
+chopsticks
+napkin
+umbrella
+hat
+cap
+scarf
+glove
+belt
+coat
+jacket
+shirt
+t-shirt
+dress
+skirt
+pants
+shorts
+sock
+shoe
+boot
+slipper
+wallet
+key
+lock
+door
+window
+curtain
+mirror
+picture
+painting
+vase
+flower
+plant
+tree
+broom
+mop
+bucket
+soap
+towel
+toothbrush
+toothpaste
+shampoo
+conditioner
+soap dispenser
+shower
+bathtub
+toilet
+brush
+comb
+razor
+tissue
+bin
+flashlight
+candle
+lighter
+match
+rope
+tape
+needle
+thread
+button
+pin
+clip
+stapler
+envelope
+stamp
+map
+globe
+medal
+trophy
+medic kit
+bandage
+thermometer
+sun
+moon
+star
+cloud
+rain
+snow
+wind
+thunder
