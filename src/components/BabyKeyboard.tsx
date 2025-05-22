@@ -20,8 +20,10 @@ export const wordMap: Record<string, { word: string; chinese: string; image: str
           entries.map(({ word, chinese, category }) => ({
             word: word.charAt(0).toUpperCase() + word.slice(1),
             chinese: chinese,
-            image: `images/${word}.png`,
-            audio: `sounds/${word}.mp3`,
+            image: category === 'flags' 
+              ? `images/flags/${word.toLowerCase().replace(/\s+/g, '-')}.png`
+              : `images/${word.toLowerCase()}.png`,
+            audio: `sounds/${word.toLowerCase()}.mp3`,
             category,
           })),
         ])
@@ -137,7 +139,7 @@ export default function BabyKeyboard() {
     }
   }, [])
 
-  //Esc 键并“恢复全屏”
+  //Esc 键并"恢复全屏"
   useEffect(() => {
     document.addEventListener("fullscreenchange", () => {
       if (!document.fullscreenElement) {
