@@ -308,6 +308,17 @@
     padding-right: 0.5rem; /* 给滚动条留一点空间 */
 }
 
+.category-list > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.category-list > div button {
+    justify-content: flex-start;
+    text-align: left;
+}
+
 .language-button-icon {
     position: fixed;
     top: 1rem;
@@ -326,4 +337,88 @@
 
 .language-button-icon:hover {
     background-color: #f0f0f0;
+}
+
+.top-right-bar {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1100;
+}
+
+.fullscreen-button-optimized {
+    background: #34d399;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.7rem 2.2rem;
+    box-shadow: 0 4px 16px rgba(52,211,153,0.15);
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.fullscreen-button-optimized:hover {
+    background: #059669;
+    box-shadow: 0 6px 24px rgba(52,211,153,0.25);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.exit-tip-optimized {
+    font-size: 0.95rem;
+    color: #222;
+    background: rgba(255,255,255,0.7);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.8rem;
+    margin-top: 0.1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    text-align: right;
+}
+
+.top-right-bar-horizontal {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    z-index: 1100;
+}
+
+.language-button-icon-optimized {
+    background-color: #fff;
+    color: #059669;
+    border: 2px solid #34d399;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.5rem;
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(52,211,153,0.08);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.language-button-icon-optimized:hover {
+    background: #34d399;
+    color: #fff;
+    border-color: #059669;
+}
+
+.exit-tip-optimized {
+    font-size: 0.95rem;
+    color: #222;
+    background: rgba(255,255,255,0.7);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.8rem;
+    margin-top: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    text-align: right;
+    white-space: nowrap;
 }

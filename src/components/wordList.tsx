@@ -1,39 +1,62 @@
 import { countries } from './countries'
 
-// 按类别组织所有单词
-const categories = {
-  flags: countries.map(country => ({
-    word: country.word,
-    chinese: country.chinese,
-    category: 'flags'
-  })),
+// 定义所有分类
+export const categories = {
+  vegetables: [
+    { word: "carrot", chinese: "胡萝卜", category: "vegetables" },
+    { word: "broccoli", chinese: "西兰花", category: "vegetables" },
+    { word: "potato", chinese: "土豆", category: "vegetables" },
+    { word: "tomato", chinese: "西红柿", category: "vegetables" },
+    { word: "cucumber", chinese: "黄瓜", category: "vegetables" },
+    { word: "eggplant", chinese: "茄子", category: "vegetables" },
+    { word: "bell pepper", chinese: "青椒", category: "vegetables" },
+    { word: "onion", chinese: "洋葱", category: "vegetables" }
+  ],
   animals: [
-    { word: "cat", chinese: "猫", category: "pets" },
-    { word: "dog", chinese: "狗", category: "pets" },
-    { word: "elephant", chinese: "大象", category: "wild animals" },
-    { word: "giraffe", chinese: "长颈鹿", category: "wild animals" },
-    { word: "lion", chinese: "狮子", category: "wild animals" },
-    { word: "monkey", chinese: "猴子", category: "wild animals" },
-    { word: "panda", chinese: "熊猫", category: "wild animals" },
-    { word: "tiger", chinese: "老虎", category: "wild animals" },
-    { word: "zebra", chinese: "斑马", category: "wild animals" },
-    { word: "kangaroo", chinese: "袋鼠", category: "wild animals" },
-    { word: "rabbit", chinese: "兔子", category: "pets" },
-    { word: "pig", chinese: "猪", category: "farm animals" },
-    { word: "duck", chinese: "鸭子", category: "birds" },
-    { word: "owl", chinese: "猫头鹰", category: "birds" },
-    { word: "quail", chinese: "鹌鹑", category: "birds" },
-    { word: "yak", chinese: "牦牛", category: "wild animals" }
+    { word: "cat", chinese: "猫", category: "animals" },
+    { word: "dog", chinese: "狗", category: "animals" },
+    { word: "elephant", chinese: "大象", category: "animals" },
+    { word: "giraffe", chinese: "长颈鹿", category: "animals" },
+    { word: "lion", chinese: "狮子", category: "animals" },
+    { word: "monkey", chinese: "猴子", category: "animals" },
+    { word: "panda", chinese: "熊猫", category: "animals" },
+    { word: "tiger", chinese: "老虎", category: "animals" },
+    { word: "zebra", chinese: "斑马", category: "animals" },
+    { word: "kangaroo", chinese: "袋鼠", category: "animals" },
+    { word: "rabbit", chinese: "兔子", category: "animals" },
+    { word: "pig", chinese: "猪", category: "animals" },
+    { word: "duck", chinese: "鸭子", category: "animals" },
+    { word: "owl", chinese: "猫头鹰", category: "animals" }
   ],
   fruits: [
     { word: "apple", chinese: "苹果", category: "fruits" },
     { word: "banana", chinese: "香蕉", category: "fruits" },
-    { word: "orange", chinese: "橙子", category: "fruits" }
+    { word: "orange", chinese: "橙子", category: "fruits" },
+    { word: "strawberry", chinese: "草莓", category: "fruits" },
+    { word: "grape", chinese: "葡萄", category: "fruits" },
+    { word: "watermelon", chinese: "西瓜", category: "fruits" },
+    { word: "pear", chinese: "梨", category: "fruits" },
+    { word: "peach", chinese: "桃子", category: "fruits" }
+  ],
+  colors: [
+    { word: "red", chinese: "红色", category: "colors" },
+    { word: "blue", chinese: "蓝色", category: "colors" },
+    { word: "yellow", chinese: "黄色", category: "colors" },
+    { word: "green", chinese: "绿色", category: "colors" },
+    { word: "purple", chinese: "紫色", category: "colors" },
+    { word: "orange", chinese: "橙色", category: "colors" },
+    { word: "pink", chinese: "粉色", category: "colors" },
+    { word: "brown", chinese: "棕色", category: "colors" }
   ],
   vehicles: [
     { word: "car", chinese: "汽车", category: "vehicles" },
+    { word: "bus", chinese: "公交车", category: "vehicles" },
     { word: "train", chinese: "火车", category: "vehicles" },
-    { word: "van", chinese: "面包车", category: "vehicles" }
+    { word: "airplane", chinese: "飞机", category: "vehicles" },
+    { word: "bicycle", chinese: "自行车", category: "vehicles" },
+    { word: "motorcycle", chinese: "摩托车", category: "vehicles" },
+    { word: "boat", chinese: "船", category: "vehicles" },
+    { word: "helicopter", chinese: "直升机", category: "vehicles" }
   ],
   numbers: [
     { word: "zero", chinese: "零", category: "numbers" },
@@ -46,151 +69,85 @@ const categories = {
     { word: "seven", chinese: "七", category: "numbers" },
     { word: "eight", chinese: "八", category: "numbers" },
     { word: "nine", chinese: "九", category: "numbers" },
-    { word: "ten", chinese: "十", category: "numbers" },
-    { word: "eleven", chinese: "十一", category: "numbers" },
-    { word: "twelve", chinese: "十二", category: "numbers" }
+    { word: "ten", chinese: "十", category: "numbers" }
   ],
-  nature: [
-    { word: "sun", chinese: "太阳", category: "nature" },
-    { word: "moon", chinese: "月亮", category: "nature" },
-    { word: "star", chinese: "星星", category: "nature" },
-    { word: "water", chinese: "水", category: "nature" },
-    { word: "ice", chinese: "冰", category: "nature" }
-  ],
-  sea: [
-    { word: "fish", chinese: "鱼", category: "sea creatures" },
-    { word: "whale", chinese: "鲸鱼", category: "sea creatures" }
+  flags: countries.map(country => ({
+    word: country.word,
+    chinese: country.chinese,
+    category: "flags"
+  })),
+  jobs: [
+    { word: "teacher", chinese: "老师", category: "jobs" },
+    { word: "doctor", chinese: "医生", category: "jobs" },
+    { word: "nurse", chinese: "护士", category: "jobs" },
+    { word: "police", chinese: "警察", category: "jobs" },
+    { word: "firefighter", chinese: "消防员", category: "jobs" },
+    { word: "chef", chinese: "厨师", category: "jobs" },
+    { word: "artist", chinese: "艺术家", category: "jobs" },
+    { word: "scientist", chinese: "科学家", category: "jobs" }
   ],
   musical: [
-    { word: "guitar", chinese: "吉他", category: "musical instruments" },
-    { word: "violin", chinese: "小提琴", category: "musical instruments" },
-    { word: "xylophone", chinese: "木琴", category: "musical instruments" }
-  ],
-  food: [
-    { word: "egg", chinese: "鸡蛋", category: "foods" },
-    { word: "jelly", chinese: "果冻", category: "foods" },
-    { word: "yogurt", chinese: "酸奶", category: "foods" }
-  ],
-  drinks: [
-    { word: "juice", chinese: "果汁", category: "drinks" }
-  ],
-  games: [
-    { word: "ball", chinese: "球", category: "games and toys" },
-    { word: "kite", chinese: "风筝", category: "games and toys" },
-    { word: "robot", chinese: "机器人", category: "games and toys" }
-  ],
-  buildings: [
-    { word: "house", chinese: "房子", category: "buildings" },
-    { word: "igloo", chinese: "冰屋", category: "buildings" }
-  ],
-  clothes: [
-    { word: "hat", chinese: "帽子", category: "clothes" }
-  ],
-  jobs: [
-    { word: "artist", chinese: "艺术家", category: "jobs" },
-    { word: "queen", chinese: "女王", category: "jobs" }
-  ],
-  body: [
-    { word: "nose", chinese: "鼻子", category: "body parts" }
+    { word: "piano", chinese: "钢琴", category: "musical" },
+    { word: "guitar", chinese: "吉他", category: "musical" },
+    { word: "violin", chinese: "小提琴", category: "musical" },
+    { word: "drum", chinese: "鼓", category: "musical" },
+    { word: "flute", chinese: "长笛", category: "musical" },
+    { word: "trumpet", chinese: "小号", category: "musical" },
+    { word: "saxophone", chinese: "萨克斯", category: "musical" },
+    { word: "xylophone", chinese: "木琴", category: "musical" }
   ],
   objects: [
-    { word: "umbrella", chinese: "雨伞", category: "objects" },
-    { word: "lamp", chinese: "灯", category: "household items" },
-    { word: "x-ray", chinese: "X光", category: "objects" }
+    { word: "book", chinese: "书", category: "objects" },
+    { word: "pen", chinese: "钢笔", category: "objects" },
+    { word: "pencil", chinese: "铅笔", category: "objects" },
+    { word: "ruler", chinese: "尺子", category: "objects" },
+    { word: "eraser", chinese: "橡皮", category: "objects" },
+    { word: "scissors", chinese: "剪刀", category: "objects" },
+    { word: "glue", chinese: "胶水", category: "objects" },
+    { word: "crayon", chinese: "蜡笔", category: "objects" }
   ],
-  fantasy: [
-    { word: "unicorn", chinese: "独角兽", category: "fantasy" }
-  ],
-  places: [
-    { word: "zoo", chinese: "动物园", category: "public places" }
+  others: [
+    { word: "sun", chinese: "太阳", category: "others" },
+    { word: "moon", chinese: "月亮", category: "others" },
+    { word: "star", chinese: "星星", category: "others" },
+    { word: "cloud", chinese: "云", category: "others" },
+    { word: "rain", chinese: "雨", category: "others" },
+    { word: "snow", chinese: "雪", category: "others" },
+    { word: "wind", chinese: "风", category: "others" },
+    { word: "thunder", chinese: "雷", category: "others" }
   ]
 };
 
 // 按字母索引组织所有单词
 export const wordList: Record<string, { word: string; chinese: string; category: string }[]> = {
   // 字母索引
-  a: categories.flags.filter(w => w.word.startsWith('A')).concat(
-     categories.animals.filter(w => w.word.startsWith('A')),
-     categories.fruits.filter(w => w.word.startsWith('A'))
-  ),
-  b: categories.flags.filter(w => w.word.startsWith('B')).concat(
-     categories.animals.filter(w => w.word.startsWith('B')),
-     categories.fruits.filter(w => w.word.startsWith('B'))
-  ),
-  c: categories.flags.filter(w => w.word.startsWith('C')).concat(
-     categories.animals.filter(w => w.word.startsWith('C')),
-     categories.fruits.filter(w => w.word.startsWith('C'))
-  ),
-  // ... 其他字母索引
-  d: categories.flags.filter(w => w.word.startsWith('D')).concat(
-     categories.animals.filter(w => w.word.startsWith('D'))
-  ),
-  e: categories.flags.filter(w => w.word.startsWith('E')).concat(
-     categories.animals.filter(w => w.word.startsWith('E'))
-  ),
-  f: categories.flags.filter(w => w.word.startsWith('F')).concat(
-     categories.animals.filter(w => w.word.startsWith('F'))
-  ),
-  g: categories.flags.filter(w => w.word.startsWith('G')).concat(
-     categories.animals.filter(w => w.word.startsWith('G'))
-  ),
-  h: categories.flags.filter(w => w.word.startsWith('H')).concat(
-     categories.animals.filter(w => w.word.startsWith('H'))
-  ),
-  i: categories.flags.filter(w => w.word.startsWith('I')).concat(
-     categories.animals.filter(w => w.word.startsWith('I'))
-  ),
-  j: categories.flags.filter(w => w.word.startsWith('J')).concat(
-     categories.animals.filter(w => w.word.startsWith('J'))
-  ),
-  k: categories.flags.filter(w => w.word.startsWith('K')).concat(
-     categories.animals.filter(w => w.word.startsWith('K'))
-  ),
-  l: categories.flags.filter(w => w.word.startsWith('L')).concat(
-     categories.animals.filter(w => w.word.startsWith('L'))
-  ),
-  m: categories.flags.filter(w => w.word.startsWith('M')).concat(
-     categories.animals.filter(w => w.word.startsWith('M'))
-  ),
-  n: categories.flags.filter(w => w.word.startsWith('N')).concat(
-     categories.animals.filter(w => w.word.startsWith('N'))
-  ),
-  o: categories.flags.filter(w => w.word.startsWith('O')).concat(
-     categories.animals.filter(w => w.word.startsWith('O'))
-  ),
-  p: categories.flags.filter(w => w.word.startsWith('P')).concat(
-     categories.animals.filter(w => w.word.startsWith('P'))
-  ),
-  q: categories.flags.filter(w => w.word.startsWith('Q')).concat(
-     categories.animals.filter(w => w.word.startsWith('Q'))
-  ),
-  r: categories.flags.filter(w => w.word.startsWith('R')).concat(
-     categories.animals.filter(w => w.word.startsWith('R'))
-  ),
-  s: categories.flags.filter(w => w.word.startsWith('S')).concat(
-     categories.animals.filter(w => w.word.startsWith('S'))
-  ),
-  t: categories.flags.filter(w => w.word.startsWith('T')).concat(
-     categories.animals.filter(w => w.word.startsWith('T'))
-  ),
-  u: categories.flags.filter(w => w.word.startsWith('U')).concat(
-     categories.animals.filter(w => w.word.startsWith('U'))
-  ),
-  v: categories.flags.filter(w => w.word.startsWith('V')).concat(
-     categories.animals.filter(w => w.word.startsWith('V'))
-  ),
-  w: categories.flags.filter(w => w.word.startsWith('W')).concat(
-     categories.animals.filter(w => w.word.startsWith('W'))
-  ),
-  x: categories.flags.filter(w => w.word.startsWith('X')).concat(
-     categories.animals.filter(w => w.word.startsWith('X'))
-  ),
-  y: categories.flags.filter(w => w.word.startsWith('Y')).concat(
-     categories.animals.filter(w => w.word.startsWith('Y'))
-  ),
-  z: categories.flags.filter(w => w.word.startsWith('Z')).concat(
-     categories.animals.filter(w => w.word.startsWith('Z'))
-  ),
+  a: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('a')),
+  b: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('b')),
+  c: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('c')),
+  d: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('d')),
+  e: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('e')),
+  f: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('f')),
+  g: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('g')),
+  h: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('h')),
+  i: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('i')),
+  j: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('j')),
+  k: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('k')),
+  l: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('l')),
+  m: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('m')),
+  n: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('n')),
+  o: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('o')),
+  p: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('p')),
+  q: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('q')),
+  r: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('r')),
+  s: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('s')),
+  t: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('t')),
+  u: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('u')),
+  v: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('v')),
+  w: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('w')),
+  x: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('x')),
+  y: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('y')),
+  z: Object.values(categories).flat().filter(w => w.word.toLowerCase().startsWith('z')),
+  
   // 数字索引
   0: categories.numbers.filter(w => w.word === "zero"),
   1: categories.numbers.filter(w => w.word === "one"),
@@ -202,6 +159,7 @@ export const wordList: Record<string, { word: string; chinese: string; category:
   7: categories.numbers.filter(w => w.word === "seven"),
   8: categories.numbers.filter(w => w.word === "eight"),
   9: categories.numbers.filter(w => w.word === "nine"),
+  
   // 功能键索引
   f1: categories.numbers.filter(w => w.word === "one"),
   f2: categories.numbers.filter(w => w.word === "two"),
@@ -213,25 +171,17 @@ export const wordList: Record<string, { word: string; chinese: string; category:
   f8: categories.numbers.filter(w => w.word === "eight"),
   f9: categories.numbers.filter(w => w.word === "nine"),
   f10: categories.numbers.filter(w => w.word === "ten"),
-  f11: categories.numbers.filter(w => w.word === "eleven"),
-  f12: categories.numbers.filter(w => w.word === "twelve"),
+  
   // 类别索引
-  flags: categories.flags,
+  vegetables: categories.vegetables,
   animals: categories.animals,
   fruits: categories.fruits,
+  colors: categories.colors,
   vehicles: categories.vehicles,
   numbers: categories.numbers,
-  nature: categories.nature,
-  sea: categories.sea,
-  musical: categories.musical,
-  food: categories.food,
-  drinks: categories.drinks,
-  games: categories.games,
-  buildings: categories.buildings,
-  clothes: categories.clothes,
+  flags: categories.flags,
   jobs: categories.jobs,
-  body: categories.body,
+  musical: categories.musical,
   objects: categories.objects,
-  fantasy: categories.fantasy,
-  places: categories.places
+  others: categories.others
 };

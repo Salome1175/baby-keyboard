@@ -72,30 +72,52 @@ export default function BabyKeyboard() {
     });
   };
 
+  //分类标签中英文
+  const categoryLabels = [
+    { id: 'all', en: 'All', zh: '全部' },
+    { id: 'vegetables', en: 'Vegetables', zh: '蔬菜' },
+    { id: 'animals', en: 'Animals', zh: '动物' },
+    { id: 'fruits', en: 'Fruits', zh: '水果' },
+    { id: 'colors', en: 'Colors', zh: '颜色' },
+    { id: 'objects', en: 'Objects', zh: '物品' },
+    { id: 'vehicles', en: 'Vehicles', zh: '交通工具' },
+    { id: 'numbers', en: 'Numbers', zh: '数字' },
+    { id: 'flags', en: 'Flags', zh: '国旗' },
+    { id: 'jobs', en: 'Jobs', zh: '职业' },
+    { id: 'musical', en: 'Musical', zh: '乐器' },
+    { id: 'others', en: 'Others', zh: '其他' }
+  ];
+  const categoryIds = categoryLabels.map(c => c.id).filter(id => id !== 'all');
+
   const toggleCategory = (category: string) => {
     if (category === "all") {
-      selectedCategoriesRef.current = ["all"];
-      _setSelectedCategories(["all"]);
+      if (selectedCategoriesRef.current.length === categoryIds.length) {
+        // 已全选，再点all则全部取消
+        selectedCategoriesRef.current = [];
+        _setSelectedCategories([]);
+      } else {
+        // 选中all时全选
+        selectedCategoriesRef.current = [...categoryIds];
+        _setSelectedCategories([...categoryIds]);
+      }
     } else {
       _setSelectedCategories(prev => {
-        const newSelected = prev.includes(category)
-            ? prev.filter(c => c !== category)
-            : [...prev.filter(c => c !== "all"), category];
-
-        selectedCategoriesRef.current = newSelected.length === 0 ? ["all"] : newSelected;
-        return selectedCategoriesRef.current;
+        let newSelected;
+        if (prev.includes(category)) {
+          newSelected = prev.filter(c => c !== category);
+        } else {
+          newSelected = [...prev, category];
+        }
+        // 如果全选了，自动高亮all
+        if (newSelected.length === categoryIds.length) {
+          selectedCategoriesRef.current = [...categoryIds];
+          return [...categoryIds];
+        }
+        selectedCategoriesRef.current = newSelected;
+        return newSelected;
       });
     }
   };
-
-  //单词分类
-  const allCategories = ["all", ...Array.from(
-      new Set(
-          Object.values(wordList)
-              .flat()
-              .map(entry => entry.category)
-      )
-  )];
 
   //朗读时语言切换
   const speak = (textEn: string, textZh: string) => {
@@ -169,6 +191,10 @@ export default function BabyKeyboard() {
         window.location.reload();
       }
 
+      // 调试输出
+      console.log('当前按键:', key, '当前分类:', selectedCategoriesRef.current);
+      console.log('wordMap[key]:', wordMap[key]);
+
       const fullList = wordMap[key] || wordMap['t'];
       const currentCategories = selectedCategoriesRef.current;
       const filteredList = fullList.filter(entry => {
@@ -176,6 +202,7 @@ export default function BabyKeyboard() {
       });
 
       if (filteredList.length === 0) {
+        console.log('过滤后无内容', { key, currentCategories, fullList });
         return;
       }
 
@@ -218,10 +245,24 @@ export default function BabyKeyboard() {
     return () => window.removeEventListener("keydown", handleBlockKeys, true);
   }, []);
 
+  // 点击空白处收起分类面板
+  useEffect(() => {
+    if (!showCategories) return;
+    const handleClick = (e: MouseEvent) => {
+      const dropdown = document.querySelector('.category-dropdown');
+      if (dropdown && !dropdown.contains(e.target as Node)) {
+        setShowCategories(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showCategories]);
+
   return (
       <div className="baby-keyboard">
 
-        <div className="top-bar">
+        {/* 右上角操作区 */}
+        <div className="top-right-bar-horizontal">
           <button
               onClick={() => {
                 if (!document.fullscreenElement) {
@@ -230,38 +271,56 @@ export default function BabyKeyboard() {
                   document.exitFullscreen().catch(err => console.error(err));
                 }
               }}
-              className="fullscreen-button"
+              className="fullscreen-button-optimized"
           >
             切换全屏模式
           </button>
-          <span className="exit-tip">同时按 <strong>Q</strong> 和 <strong>P</strong> 可退出游戏</span>
+          <button
+              onClick={toggleLanguage}
+              className="language-button-icon-optimized"
+          >
+            切换朗读：{speakLanguage === "en" ? "英文" : "中文"}
+          </button>
+          <span className="exit-tip-optimized">同时按 <strong>Q</strong> 和 <strong>P</strong> 可退出游戏</span>
         </div>
 
         {/*单词分类下拉选相框*/}
         <div className="category-dropdown">
-          {/* 展开收起按钮 */}
           <div className="category-header" onClick={() => setShowCategories(!showCategories)}>
             <span className="arrow">{showCategories ? "▼" : "▶"}</span>
-            <span className="title">category</span>
+            <span className="title">{speakLanguage === 'en' ? 'Category' : '分类'}</span>
           </div>
-
-          {/* 展开的分类列表 */}
           {showCategories && (
-              <div className="category-list">
-                {allCategories.map(category => {
-                  const isSelected = selectedCategories.includes(category);
-                  return (
-                      <div
-                          key={category}
-                          className="category-item"
-                          onClick={() => toggleCategory(category)}
-                      >
-                        <span className="circle">{isSelected ? "✅" : "⭕️"}</span>
-                        <span className="label">{category}</span>
-                      </div>
-                  );
-                })}
+            <div className="category-list">
+              <div className="flex flex-col gap-2 mb-4">
+                <button
+                  key="all"
+                  onClick={() => toggleCategory('all')}
+                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors flex items-center
+                    ${selectedCategories.length === categoryIds.length
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                >
+                  <span className="mr-2">{selectedCategories.length === categoryIds.length ? '✅' : '⭕️'}</span>
+                  {speakLanguage === 'en' ? categoryLabels[0].en : categoryLabels[0].zh}
+                </button>
+                {categoryLabels.filter(c => c.id !== 'all').map(category => (
+                  <button
+                    key={category.id}
+                    onClick={() => toggleCategory(category.id)}
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors flex items-center
+                      ${selectedCategories.includes(category.id)
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                  >
+                    <span className="mr-2">{selectedCategories.includes(category.id) ? '✅' : '⭕️'}</span>
+                    {speakLanguage === 'en' ? category.en : category.zh}
+                  </button>
+                ))}
               </div>
+            </div>
           )}
         </div>
 
@@ -285,13 +344,6 @@ export default function BabyKeyboard() {
                 className="word-image"
             />
         )}
-
-        <button
-            onClick={toggleLanguage}
-            className="language-button-icon"
-        >
-          切换朗读：{speakLanguage === "en" ? "英文" : "中文"}
-        </button>
 
         <button
             onClick={() => setShowAskDialog(true)}
